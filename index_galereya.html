@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поликлиника ATRIUM - Галерея</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        /* Шапка */
+        header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right {
+            justify-content: flex-end;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-image {
+            height: 70px;
+            width: auto;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+            .nav-link:hover {
+                color: #3498db;
+            }
+
+        .page-title {
+            color: #2c3e50;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 32px;
+        }
+
+        .page-description {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Стили для галереи */
+        .gallery-container {
+            padding: 20px;
+        }
+
+        .blocks {
+            position: relative;
+            float: left;
+            clear: none;
+            padding-bottom: 20px;
+            padding-right: 20px;
+            margin: 10px;
+            width: calc(25% - 20px);
+        }
+
+        @media (max-width: 1024px) {
+            .blocks {
+                width: calc(33.33% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blocks {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blocks {
+                width: 100%;
+            }
+        }
+
+        .resize_thumb {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .blocks a {
+            display: block;
+            text-decoration: none;
+            cursor: default;
+        }
+
+            .blocks a:hover {
+                position: relative;
+            }
+
+        .blocks span img {
+            border: 1px solid #FFFFFF;
+            margin-bottom: 8px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .blocks a span {
+            position: absolute;
+            display: none;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            background-color: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 8px;
+            z-index: 100;
+            width: 300px;
+            text-align: center;
+        }
+
+        .blocks a:hover span {
+            display: block;
+            top: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.97;
+        }
+
+        /* Футер */
+        .contact-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+            .contact-info a {
+                color: #3498db;
+                text-decoration: none;
+            }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            header {
+                grid-template-columns: 1fr;
+                grid-gap: 15px;
+                text-align: center;
+            }
+
+            .header-left, .header-right {
+                justify-content: center;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-image {
+                height: 35px;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .gallery-container {
+                padding: 10px;
+            }
+
+            .blocks {
+                padding-right: 10px;
+                padding-bottom: 10px;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <span class="nav-link" onclick="location.href='index.html'">Главная страница</span>
+            </div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/LOGOBLYAT.png" alt="Логотип поликлиники" class="logo-image">
+                </a>
+            </div>
+            <div class="header-right">
+                <span class="nav-link" onclick="location.href='gallery.html'">Галерея</span>
+            </div>
+        </header>
+
+        <h1 class="page-title">Галерея поликлиники ATRIUM</h1>
+        <p class="page-description">Наведите курсор на миниатюры, чтобы увидеть увеличенное изображение и описание</p>
+
+        <div class="gallery-container">
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/01.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/1.jpg" alt="large">
+                        Современный диагностический кабинет с передовым оборудованием для точной диагностики заболеваний.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/02.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/2.jpg" alt="large">
+                        Просторный и комфортный зал ожидания для пациентов с удобными креслами и приятной атмосферой.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/03.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/3.jpg" alt="large">
+                        Лаборатория для проведения анализов с современным оборудованием и квалифицированными специалистами.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/04.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/4.jpg" alt="large">
+                        Процедурный кабинет для проведения различных медицинских манипуляций в стерильных условиях.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/05.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/5.jpg" alt="large">
+                        Кабинет физиотерапии с современным оборудованием для реабилитации и восстановительного лечения.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/06.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/6.jpg" alt="large">
+                        Детское отделение с ярким дизайном и игровой зоной для комфортного пребывания маленьких пациентов.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/07.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/7.jpg" alt="large">
+                        Кабинет стоматологии с современным оборудованием для качественного и безболезненного лечения.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/08.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/8.jpg" alt="large">
+                        Регистратура с удобной системой электронной записи и вежливыми администраторами.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/09.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/9.jpg" alt="large">
+                        Кабинет УЗИ-диагностики с современным оборудованием для точных исследований.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/10.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/10.jpg" alt="large">
+                        Процедурный кабинет для забора анализов крови в комфортных условиях.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/11.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/11.jpg" alt="large">
+                        Кабинет кардиолога с современным оборудованием для диагностики сердечно-сосудистых заболеваний.
+                    </span>
+                </a>
+            </div>
+
+            <div class="blocks">
+                <a href="#">
+                    <img src="img/12.jpg" alt="thumb" class="resize_thumb">
+                    <span>
+                        <img src="img/12.jpg" alt="large">
+                        Кабинет офтальмолога с современным оборудованием для диагностики и лечения заболеваний глаз.
+                    </span>
+                </a>
+            </div>
+
+            <div style="clear: both;"></div>
+        </div>
+
+        <!-- Футер -->
+        <footer class="contact-info">
+            <a href="contacts.html" class="contact-link">Контактные данные поликлиники</a>
+            <p>© 2025 Поликлиника ATRIUM. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Простая проверка загрузки изображения
+        window.addEventListener('load', function () {
+            const img = document.querySelector('.logo img');
+            setTimeout(function () {
+                if (img.naturalHeight === 0) {
+                    // Если изображение не загрузилось, используем заглушку
+                    img.src = 'https://via.placeholder.com/200x70/ffffff/3498db?text=ATRIUM+CLINIC';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
