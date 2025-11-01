@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поликлиника - Выбор врача</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Шапка */
+        .header {
+            background: #2c3e50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+            .logo img {
+                height: 100%;
+                max-width: 200px;
+            }
+
+        .logo-link {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        /* Основной контент */
+        .main-content {
+            padding: 40px 20px;
+        }
+
+        .page-title {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .doctors-section {
+            margin-bottom: 40px;
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .doctor-card {
+            background: #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #bdc3c7;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+            .doctor-card:hover {
+                background: #d5dbdb;
+                border-color: #3498db;
+                transform: translateY(-5px);
+            }
+
+        .doctor-link {
+            text-decoration: none;
+            color: #2c3e50;
+            display: block;
+        }
+
+        .doctor-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .doctor-specialization {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #bdc3c7;
+            margin: 40px 0;
+        }
+
+        /* Футер */
+        .footer {
+            background: #34495e;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+            .contact-link:hover {
+                text-decoration: underline;
+            }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .doctors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <header class="header">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <img src="images/LOGOBLYAT.png" alt="Логотип поликлиники" class="logo-image"
+                         onerror="this.src='https://via.placeholder.com/200x80/2c3e50/ffffff?text=LOGO+ATRIUM'">
+                </div>
+            </a>
+            <h1>Поликлиника ATRIUM</h1>
+            <p>Выбор врача</p>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <h2 class="page-title">Выберите врача для записи</h2>
+
+            <div class="doctors-section">
+                <div class="doctors-grid">
+                    <div class="doctor-card">
+                        <a href="doctor1.html" class="doctor-link">
+                            <div class="doctor-name">Иванов Иван Иванович</div>
+                            <div class="doctor-specialization">Терапевт</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor2.html" class="doctor-link">
+                            <div class="doctor-name">Петрова Анна Сергеевна</div>
+                            <div class="doctor-specialization">Кардиолог</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor3.html" class="doctor-link">
+                            <div class="doctor-name">Сидоров Алексей Владимирович</div>
+                            <div class="doctor-specialization">Невролог</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor4.html" class="doctor-link">
+                            <div class="doctor-name">Кузнецова Мария Петровна</div>
+                            <div class="doctor-specialization">Офтальмолог</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor5.html" class="doctor-link">
+                            <div class="doctor-name">Васильев Дмитрий Николаевич</div>
+                            <div class="doctor-specialization">Хирург</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor6.html" class="doctor-link">
+                            <div class="doctor-name">Смирнова Ольга Игоревна</div>
+                            <div class="doctor-specialization">Педиатр</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor7.html" class="doctor-link">
+                            <div class="doctor-name">Федоров Сергей Александрович</div>
+                            <div class="doctor-specialization">Отоларинголог</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor8.html" class="doctor-link">
+                            <div class="doctor-name">Николаева Елена Викторовна</div>
+                            <div class="doctor-specialization">Гастроэнтеролог</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor9.html" class="doctor-link">
+                            <div class="doctor-name">Козлов Андрей Михайлович</div>
+                            <div class="doctor-specialization">Уролог</div>
+                        </a>
+                    </div>
+
+                    <div class="doctor-card">
+                        <a href="doctor10.html" class="doctor-link">
+                            <div class="doctor-name">Морозова Татьяна Дмитриевна</div>
+                            <div class="doctor-specialization">Дерматолог</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+        </main>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <a href="contacts.html" class="contact-link">Контактные данные поликлиники</a>
+            <p>© 2025 Поликлиника ATRIUM. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Простая проверка загрузки изображения
+        window.addEventListener('load', function () {
+            const img = document.querySelector('.logo img');
+            setTimeout(function () {
+                if (img.naturalHeight === 0) {
+                    // Если изображение не загрузилось, используем заглушку
+                    img.src = 'https://via.placeholder.com/200x80/2c3e50/ffffff?text=LOGO+ATRIUM';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

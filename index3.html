@@ -1,0 +1,699 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поликлиника ATRIUM - Анкета удовлетворенности</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f2f5 0%, #e1e8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Шапка */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            padding: 25px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .logo {
+            height: 70px;
+            margin-bottom: 15px;
+        }
+
+            .logo img {
+                height: 100%;
+                max-width: 200px;
+            }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Основной контент */
+        .main-content {
+            padding: 40px;
+        }
+
+        .page-title {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 26px;
+            position: relative;
+        }
+
+            .page-title:after {
+                content: '';
+                display: block;
+                width: 80px;
+                height: 4px;
+                background: #3498db;
+                margin: 10px auto 0;
+                border-radius: 2px;
+            }
+
+        .survey-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .question-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid #3498db;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .rating-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .rating-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5px;
+        }
+
+        .rating-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 5px;
+            border: 2px solid #bdc3c7;
+        }
+
+            .rating-number:hover {
+                background: #d5dbdb;
+                transform: scale(1.1);
+            }
+
+            .rating-number.selected {
+                background: #3498db;
+                color: white;
+                border-color: #2980b9;
+                transform: scale(1.1);
+            }
+
+        .rating-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .comment-section {
+            margin-top: 20px;
+        }
+
+        .comment-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e1e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: white;
+            min-height: 100px;
+            resize: vertical;
+        }
+
+            textarea:focus {
+                border-color: #3498db;
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            margin-top: 20px;
+        }
+
+            .submit-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            }
+
+            .submit-btn:active {
+                transform: translateY(0);
+            }
+
+        .progress-container {
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: right;
+            margin-top: 5px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Футер */
+        .footer {
+            background: #34495e;
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+            .contact-link:hover {
+                text-decoration: underline;
+            }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 25px 20px;
+            }
+
+            .rating-scale {
+                justify-content: center;
+            }
+
+            .rating-option {
+                margin: 8px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .rating-number {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="logo">
+                <img src="images/LOGOBLYAT.png" alt="Логотип поликлиники" class="logo-image"
+                     onerror="this.src='https://via.placeholder.com/200x70/ffffff/3498db?text=ATRIUM+CLINIC'">
+            </div>
+            <h1>Поликлиника ATRIUM</h1>
+            <p>Анкета удовлетворенности пациентов</p>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <h2 class="page-title">Оцените качество наших услуг</h2>
+
+            <div class="survey-intro">
+                <p>Уважаемый пациент, мы ценим ваше мнение и стремимся постоянно улучшать качество наших услуг. Пожалуйста, оцените различные аспекты работы нашей поликлиники по шкале от 1 до 10, где 1 - минимальная оценка, а 10 - максимальная.</p>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">0% завершено</div>
+            </div>
+
+            <form id="satisfaction-survey">
+                <!-- Вопрос 1 -->
+                <div class="question-container">
+                    <div class="question-text">1. Насколько Вы довольны сроками исполнения заявленных обязательств?</div>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="1">1</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="2">2</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="3">3</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="4">4</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="5">5</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="6">6</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="7">7</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="8">8</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="9">9</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="10">10</div>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span>Совсем не доволен</span>
+                        <span>Полностью доволен</span>
+                    </div>
+                </div>
+
+                <!-- Вопрос 2 -->
+                <div class="question-container">
+                    <div class="question-text">2. Насколько услуги поликлиники, по Вашему мнению, соответствуют заявленному уровню качества?</div>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="1">1</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="2">2</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="3">3</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="4">4</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="5">5</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="6">6</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="7">7</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="8">8</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="9">9</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="10">10</div>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span>Не соответствуют</span>
+                        <span>Полностью соответствуют</span>
+                    </div>
+                </div>
+
+                <!-- Вопрос 3 -->
+                <div class="question-container">
+                    <div class="question-text">3. Оцените степень доступности поликлиники (территориальная представленность, график работы).</div>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="1">1</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="2">2</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="3">3</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="4">4</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="5">5</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="6">6</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="7">7</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="8">8</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="9">9</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="10">10</div>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span>Неудовлетворительно</span>
+                        <span>Отлично</span>
+                    </div>
+                    <div class="comment-section">
+                        <label class="comment-label">Комментарии</label>
+                        <textarea placeholder="Пожалуйста, оставьте ваши комментарии по доступности поликлиники..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Вопрос 4 -->
+                <div class="question-container">
+                    <div class="question-text">4. Оцените соответствие качества предлагаемых медицинских услуг Вашим потребностям.</div>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="1">1</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="2">2</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="3">3</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="4">4</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="5">5</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="6">6</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="7">7</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="8">8</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="9">9</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="10">10</div>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span>Не соответствует</span>
+                        <span>Полностью соответствует</span>
+                    </div>
+                    <div class="comment-section">
+                        <label class="comment-label">Комментарии</label>
+                        <textarea placeholder="Пожалуйста, оставьте ваши комментарии по качеству медицинских услуг..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Вопрос 5 -->
+                <div class="question-container">
+                    <div class="question-text">5. Достаточно ли времени для решения Ваших вопросов уделяют Вам сотрудники нашей поликлиники?</div>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="1">1</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="2">2</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="3">3</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="4">4</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="5">5</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="6">6</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="7">7</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="8">8</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="9">9</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="10">10</div>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span>Недостаточно</span>
+                        <span>Вполне достаточно</span>
+                    </div>
+                </div>
+
+                <!-- Вопрос 6 -->
+                <div class="question-container">
+                    <div class="question-text">6. Оцените степень внимательности и расторопности сотрудника поликлиники по отношению к Вам.</div>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="1">1</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="2">2</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="3">3</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="4">4</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="5">5</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="6">6</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="7">7</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="8">8</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="9">9</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="10">10</div>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span>Неудовлетворительно</span>
+                        <span>Отлично</span>
+                    </div>
+                </div>
+
+                <!-- Вопрос 7 -->
+                <div class="question-container">
+                    <div class="question-text">7. Как Вы оцениваете уровень профессиональной компетентности обслуживающих Вас сотрудников?</div>
+                    <div class="rating-scale">
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="1">1</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="2">2</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="3">3</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="4">4</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="5">5</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="6">6</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="7">7</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="8">8</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="9">9</div>
+                        </div>
+                        <div class="rating-option">
+                            <div class="rating-number" data-value="10">10</div>
+                        </div>
+                    </div>
+                    <div class="rating-labels">
+                        <span>Низкий уровень</span>
+                        <span>Высокий уровень</span>
+                    </div>
+                    <div class="comment-section">
+                        <label class="comment-label">Комментарии</label>
+                        <textarea placeholder="Пожалуйста, оставьте ваши комментарии по компетентности сотрудников..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Отправить анкету</button>
+            </form>
+        </main>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <a href="contacts.html" class="contact-link">Контактные данные поликлиники</a>
+            <p>© 2025 Поликлиника ATRIUM. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Обработка выбора рейтинга
+        document.querySelectorAll('.rating-number').forEach(option => {
+            option.addEventListener('click', function () {
+                const questionContainer = this.closest('.question-container');
+                const allOptions = questionContainer.querySelectorAll('.rating-number');
+
+                // Убираем выделение со всех вариантов в этом вопросе
+                allOptions.forEach(opt => opt.classList.remove('selected'));
+
+                // Выделяем выбранный вариант
+                this.classList.add('selected');
+
+                // Обновляем прогресс
+                updateProgress();
+            });
+        });
+
+        // Обновление прогресса заполнения анкеты
+        function updateProgress() {
+            const totalQuestions = 6; // Фиксированное количество вопросов
+            const answeredQuestions = document.querySelectorAll('.question-container .rating-number.selected').length;
+
+            const progressPercentage = Math.round((answeredQuestions / totalQuestions) * 100);
+
+            document.getElementById('progress-fill').style.width = `${progressPercentage}%`;
+            document.getElementById('progress-text').textContent = `${progressPercentage}% завершено`;
+        }
+
+        // Обработка отправки формы
+        document.getElementById('satisfaction-survey').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Проверяем, что все вопросы заполнены
+            const totalQuestions = 7;
+            const answeredQuestions = document.querySelectorAll('.question-container .rating-number.selected').length;
+
+            if (answeredQuestions < totalQuestions) {
+                alert('Пожалуйста, ответьте на все вопросы анкеты перед отправкой.');
+                return;
+            }
+
+            // В реальном приложении здесь был бы код для отправки данных на сервер
+            alert('Благодарим вас за участие в опросе! Ваши ответы помогут нам улучшить качество обслуживания.');
+            this.reset();
+
+            // Сбрасываем прогресс
+            document.querySelectorAll('.rating-number').forEach(opt => opt.classList.remove('selected'));
+            updateProgress();
+        });
+
+        // Простая проверка загрузки изображения
+        window.addEventListener('load', function () {
+            const img = document.querySelector('.logo img');
+            setTimeout(function () {
+                if (img.naturalHeight === 0) {
+                    // Если изображение не загрузилось, используем заглушку
+                    img.src = 'https://via.placeholder.com/200x70/ffffff/3498db?text=ATRIUM+CLINIC';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

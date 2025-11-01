@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в систему - Поликлиника</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right {
+            justify-content: flex-end;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-image {
+            height: 70px;
+            width: auto;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        .instruction {
+            text-align: center;
+            padding: 15px;
+            background: #ecf0f1;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .login-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .login-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+            background: white;
+        }
+
+        .login-side {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .password-link {
+            display: block;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+            .password-link a {
+                color: #3498db;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+            .contact-info a {
+                color: #3498db;
+                text-decoration: none;
+            }
+
+        .requirements {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+
+            header {
+                grid-template-columns: 1fr;
+                grid-gap: 15px;
+                text-align: center;
+            }
+
+            .header-left, .header-right {
+                justify-content: center;
+            }
+
+            .logo-image {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-image {
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <span class="nav-link">Главная страница</span>
+            </div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/LOGOBLYAT.png" alt="Логотип поликлиники" class="logo-image">
+                </a>
+            </div>
+            <div class="header-right">
+                <span class="nav-link">Поликлинника ATRIUM</span>
+            </div>
+        </header>
+
+        <div class="instruction">
+            Инструкция пользователя
+        </div>
+
+        <div class="login-container">
+            <div class="login-form">
+                <h1>ВХОД</h1>
+
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="login">ЛОГИН</label>
+                        <input type="text" id="login" name="login" placeholder="Введите ваш логин" required>
+                        <div class="requirements">Логин может быть email или именем пользователя</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">ПАРОЛЬ</label>
+                        <input type="password" id="password" name="password" placeholder="Введите ваш пароль" required>
+                        <div class="password-link">
+                            <a href="#">Восстановить пароль</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn-login">Войти</a>
+                </form>
+            </div>
+
+            <div class="login-side">
+                <h2>Контактные данные</h2>
+                <p>Если у вас возникли проблемы с входом в систему, пожалуйста, свяжитесь с нашей технической поддержкой:</p>
+                <p>📞 Телефон: <a href="tel:+78001234567">8 (800) 123-45-67</a></p>
+                <p>✉️ Email: <a href="mailto:support@polyclinic.ru">support@polyclinic.ru</a></p>
+                <p>🕒 Время работы: Пн-Пт с 9:00 до 18:00</p>
+
+                <div style="margin-top: 30px; padding: 15px; background: #eaf2f8; border-radius: 6px;">
+                    <h3>Нужна помощь?</h3>
+                    <p>Ознакомьтесь с <a href="#" style="color: #3498db;">инструкцией пользователя</a> для получения подробной информации о работе с системой.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <p>© 2025 Поликлиника ATRIUM. Все права защищены. | <a href="#">Политика конфиденциальности</a></p>
+        </div>
+    </div>
+</body>
+</html>
